@@ -1,0 +1,33 @@
+Spotify K-means analysis
+========================
+
+Observations used: 4830 
+Features used: danceability, energy, tempo, valence, acousticness, instrumentalness, speechiness, liveness, loudness, duration_ms 
+Candidate k values: 2, 3, 4, 5, 6, 7, 8 
+Selected k: 4 
+Overall majority-genre match rate: 0.213 
+
+K selection diagnostics
+ k tot_withinss betweenss avg_silhouette
+ 2     35086.08  13203.92      0.3414153
+ 3     31580.00  16710.00      0.2040245
+ 4     28437.02  19852.98      0.1990255
+ 5     26022.90  22267.10      0.1927055
+ 6     24051.86  24238.14      0.1681091
+ 7     22559.98  25730.02      0.1689707
+ 8     21096.76  27193.24      0.1754828
+
+Cluster genre summary
+ cluster size dominant_genre dominant_share
+       1  355      classical          0.248
+       2  789        hip-hop          0.300
+       3  991           lofi          0.268
+       4 2695            pop          0.162
+                               top_3_genres
+ classical: 88 | wellness: 80 | ambient: 73
+   hip-hop: 237 | latin: 111 | ambient: 103
+     lofi: 266 | jazz: 116 | electronic: 99
+     pop: 436 | electronic: 369 | rock: 322
+
+Interpretation
+Clusters reflect broad audio profiles rather than a one-to-one genre mapping. Any mismatch between a cluster's dominant genre and the labeled genre is evidence of genre overlap, mixed playlist curation, or ambiguous sonic boundaries. 

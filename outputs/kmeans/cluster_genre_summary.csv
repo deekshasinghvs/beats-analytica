@@ -1,0 +1,5 @@
+"cluster","size","dominant_genre","dominant_share","top_3_genres"
+"1",355,"classical",0.248,"classical: 88 | wellness: 80 | ambient: 73"
+"2",789,"hip-hop",0.3,"hip-hop: 237 | latin: 111 | ambient: 103"
+"3",991,"lofi",0.268,"lofi: 266 | jazz: 116 | electronic: 99"
+"4",2695,"pop",0.162,"pop: 436 | electronic: 369 | rock: 322"

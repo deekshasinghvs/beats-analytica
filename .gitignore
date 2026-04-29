@@ -1,0 +1,37 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.venv/
+venv/
+
+# API keys — never commit
+.env
+*.env
+secrets.yaml
+secrets.json
+
+# Intermediate build artefacts
+reports/kmeans_findings.html
+
+# Large generated CSVs — keep model outputs but skip full track-level files
+# (comment out the line below to re-include track-level assignments)
+# outputs/kmeans/track_level_cluster_assignments.csv
+
+# IDE
+.cursor/
+.vscode/
+*.code-workspace
