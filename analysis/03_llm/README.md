@@ -1,6 +1,6 @@
 # Analysis 03 · LLM Few-Shot Genre Classification
 
-> **Status: In progress**
+> **Status: Complete** — `fewshot.r`
 
 ## Objective
 
@@ -67,4 +67,41 @@ Genre:
 
 ## Script
 
-`analysis/03_llm/llm_classification.py` — to be created. Requires an OpenAI API key set as the `OPENAI_API_KEY` environment variable.
+`analysis/03_llm/fewshot.r` — R script using the Anthropic Claude API.
+
+## Setup
+
+```r
+install.packages(c("httr2", "jsonlite", "randomForest"))
+Sys.setenv(ANTHROPIC_API_KEY = "sk-ant-...")
+source("analysis/03_llm/fewshot.r")
+```
+
+Run from the **repository root**.
+
+## Implementation Details
+
+- **Model:** `claude-opus-4-6` via the Anthropic Messages API
+- **Few-shot count:** 2 examples per genre (N_SHOT = 2), compact single-line format
+- **Batch size:** 5 tracks per API call to amortise the fixed few-shot prefix cost (~95% of each prompt is the shared few-shot block)
+- **Test set cap:** 100 stratified samples by default (`MAX_TEST_N = 100`) for cost control
+- **Rate limiting:** rolling 60-second token-budget window (`TOKEN_BUDGET = 20,000`) + 429 retry with server-specified backoff
+- **Random Forest baseline:** 300-tree RF trained on all 13 features evaluated on the same subsample for direct comparison
+- **Cost estimate:** < $1 USD per full run at May 2026 pricing
+
+## Prompt Format
+
+Each track is formatted as a compact feature string:
+```
+[energy=0.83 tempo=128 dance=0.71 loud=-5.2dB live=0.12 valence=0.65
+ speech=0.042 instr=0.001 acoustic=0.05 key=7 mode=1 tsig=4 dur=214s] → rock
+```
+
+## Output
+
+Results printed to console:
+- Overall accuracy: LLM vs. Random Forest on the same 100-track subsample
+- Lift: percentage-point difference (LLM − RF)
+- Per-genre accuracy table
+- LLM confusion matrix
+- Top-7 RF feature importances (Mean Decrease Gini)
