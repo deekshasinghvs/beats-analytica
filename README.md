@@ -2,7 +2,7 @@
 
 **Do tracks that sound alike share a genre label?**
 
-Beats Analytica is an MBA Supply Chain Analytics project that uses the Spotify audio features dataset to examine how well measurable acoustic properties predict — and explain — musical genre. The project compares three classification approaches and adds a time-series extension tracking how genres have evolved since 1990.
+Beats Analytica is an OTM 714 Supply Chain Analytics project that uses the Spotify audio features dataset to examine how well measurable acoustic properties predict — and explain — musical genre. The project compares three classification approaches and adds a time-series extension tracking how genres have evolved since 1990.
 
 | # | Method | Script | Status |
 |---|---|---|---|
